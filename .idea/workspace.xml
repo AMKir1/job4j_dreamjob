@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d21c72ca-cc57-4fcc-bc92-cb367671c648" name="Default Changelist" comment="" />
+    <list default="true" id="301a4012-19d0-4df1-9020-f3aedf85048d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +25,7 @@
     <option name="projectConfigVersion" value="2" />
   </component>
   <component name="ProjectId" id="1ovKQhJIRalKNAd0H1Fp7pwPBjn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,16 +69,36 @@
       <option name="project" value="LOCAL" />
       <updated>1614237121344</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1. Maven web проект.[276373#453767]">
+      <created>1614251369151</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614251369151</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1. Техническое задание - проект &quot;Работа мечты&quot;[260362#453765]" />
     <MESSAGE value="add .gitignore and Build Status in README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="add .gitignore and Build Status in README.md" />
+    <MESSAGE value="1. Maven web проект.[276373#453767]" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Maven web проект.[276373#453767]" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2360" y="99" key="#Project_Structure" timestamp="1614162442554">
@@ -84,10 +109,10 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2510" y="213" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614236255602" />
-    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2" timestamp="1614237120515">
+    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2" timestamp="1614251368218">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614237120515" />
+    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251368218" />
     <state x="440" y="99" key="SettingsEditor" timestamp="1614162118580">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -96,6 +121,14 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2472" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614237123288" />
+    <state x="2681" y="313" key="git4idea.merge.GitMergeDialog" timestamp="1614251405284">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2681" y="313" key="git4idea.merge.GitMergeDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251405284" />
+    <state x="2717" y="423" key="git4idea.ui.GitStashDialog" timestamp="1614251392717">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2717" y="423" key="git4idea.ui.GitStashDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251392717" />
     <state x="2471" y="185" key="new project wizard" timestamp="1614162261754">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
