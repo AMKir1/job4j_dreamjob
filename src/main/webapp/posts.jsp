@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="ru.job4j.dream.Store" %>
 <%@ page import="ru.job4j.dream.model.Post" %>
+<%@ page import="java.util.Collection" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,10 +33,10 @@
                 <a class="nav-link" href="<%=request.getContextPath()%>/">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/posts.jsp">Вакансии</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/posts.do">Вакансии</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidates.jsp">Кандидаты</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/candidates.do">Кандидаты</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/post/edit.jsp">Добавить вакансию</a>
@@ -58,8 +59,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (Post post : Store.instOf().findAllPosts()) { %>
-                    <tr>
+                    <% for (Post post : (Collection<Post>) request.getAttribute("posts")) { %>
+                        <tr>
                         <td>
                             <a href="<%=request.getContextPath()%>/post/edit.jsp?id=<%=post.getId()%>">
                                 <i class="fa fa-edit mr-3"></i>
