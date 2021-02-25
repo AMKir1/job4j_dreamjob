@@ -5,7 +5,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="301a4012-19d0-4df1-9020-f3aedf85048d" name="Default Changelist" comment="" />
+    <list default="true" id="301a4012-19d0-4df1-9020-f3aedf85048d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614251533380</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".gitignore">
+      <created>1614251842455</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1614251842455</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,10 +126,10 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2510" y="213" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614236255602" />
-    <state x="122" y="40" width="1798" height="826" key="CommitChangelistDialog2" timestamp="1614251532436">
+    <state x="122" y="40" width="1798" height="826" key="CommitChangelistDialog2" timestamp="1614251841520">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="122" y="40" width="1798" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251532436" />
+    <state x="122" y="40" width="1798" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251841520" />
     <state x="2660" y="279" key="FileChooserDialogImpl" timestamp="1614251479990">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -129,10 +138,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1614162118580" />
-    <state x="2472" y="244" key="Vcs.Push.Dialog.v2" timestamp="1614251539736">
+    <state x="2472" y="244" key="Vcs.Push.Dialog.v2" timestamp="1614251844331">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2472" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251539736" />
+    <state x="2472" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251844331" />
     <state x="2681" y="313" key="git4idea.merge.GitMergeDialog" timestamp="1614251405284">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
