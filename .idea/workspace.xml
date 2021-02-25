@@ -35,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../job4j_grabber" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -76,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614251369151</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".gitignore">
+      <created>1614251533380</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614251533380</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,7 +105,8 @@
     <MESSAGE value="1. Техническое задание - проект &quot;Работа мечты&quot;[260362#453765]" />
     <MESSAGE value="add .gitignore and Build Status in README.md" />
     <MESSAGE value="1. Maven web проект.[276373#453767]" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Maven web проект.[276373#453767]" />
+    <MESSAGE value=".gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value=".gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2360" y="99" key="#Project_Structure" timestamp="1614162442554">
@@ -109,18 +117,22 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2510" y="213" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614236255602" />
-    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2" timestamp="1614251368218">
+    <state x="122" y="40" width="1798" height="826" key="CommitChangelistDialog2" timestamp="1614251532436">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="122" y="40" width="1798" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251532436" />
+    <state x="2660" y="279" key="FileChooserDialogImpl" timestamp="1614251479990">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251368218" />
+    <state x="2660" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251479990" />
     <state x="440" y="99" key="SettingsEditor" timestamp="1614162118580">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="440" y="99" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1614162118580" />
-    <state x="2472" y="244" key="Vcs.Push.Dialog.v2" timestamp="1614237123288">
+    <state x="2472" y="244" key="Vcs.Push.Dialog.v2" timestamp="1614251539736">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2472" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614237123288" />
+    <state x="2472" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614251539736" />
     <state x="2681" y="313" key="git4idea.merge.GitMergeDialog" timestamp="1614251405284">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
