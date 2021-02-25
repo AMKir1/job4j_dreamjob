@@ -9,5 +9,8 @@
         <module name="job4j_dreamjob" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="job4j_dreamjob" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

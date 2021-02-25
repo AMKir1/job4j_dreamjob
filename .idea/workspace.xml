@@ -1,45 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="301a4012-19d0-4df1-9020-f3aedf85048d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d21c72ca-cc57-4fcc-bc92-cb367671c648" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
     </option>
+  </component>
+  <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
   </component>
-  <component name="ProjectId" id="1oxxRJWGpV5se6UW5RpkN8HVVrF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1ovKQhJIRalKNAd0H1Fp7pwPBjn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -49,87 +30,75 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../job4j" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.30804598" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="301a4012-19d0-4df1-9020-f3aedf85048d" name="Default Changelist" comment="" />
-      <created>1614242032793</created>
+      <changelist id="d21c72ca-cc57-4fcc-bc92-cb367671c648" name="Default Changelist" comment="" />
+      <created>1614161609525</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1614242032793</updated>
-      <workItem from="1614242034142" duration="3595000" />
+      <updated>1614161609525</updated>
+      <workItem from="1614161611552" duration="651000" />
+      <workItem from="1614162420668" duration="2919000" />
     </task>
-    <task id="LOCAL-00001" summary="workspace.xml">
-      <created>1614250351756</created>
+    <task id="LOCAL-00001" summary="1. Техническое задание - проект &quot;Работа мечты&quot;[260362#453765]">
+      <created>1614162954472</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1614250351756</updated>
+      <updated>1614162954472</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add .gitignore and Build Status in README.md">
+      <created>1614237121343</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614237121344</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
+    <MESSAGE value="1. Техническое задание - проект &quot;Работа мечты&quot;[260362#453765]" />
+    <MESSAGE value="add .gitignore and Build Status in README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="add .gitignore and Build Status in README.md" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2765" y="387" key="#Notifications" timestamp="1614242959969">
+    <state x="2360" y="99" key="#Project_Structure" timestamp="1614162442554">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2765" y="387" key="#Notifications/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242959969" />
-    <state x="2018" y="112" width="1822" height="826" key="CommitChangelistDialog2" timestamp="1614250350674">
+    <state x="2360" y="99" key="#Project_Structure/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614162442554" />
+    <state x="2510" y="213" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1614236255602">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2018" y="112" width="1822" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250350674" />
-    <state x="2012" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1614250645871">
+    <state x="2510" y="213" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614236255602" />
+    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2" timestamp="1614237120515">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2012" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250645871" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1614242126511">
+    <state x="2137" y="40" width="1021" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614237120515" />
+    <state x="440" y="99" key="SettingsEditor" timestamp="1614162118580">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="440" y="99" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1614162118580" />
+    <state x="2472" y="244" key="Vcs.Push.Dialog.v2" timestamp="1614237123288">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242126511" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1614242126511">
+    <state x="2472" y="244" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614237123288" />
+    <state x="2471" y="185" key="new project wizard" timestamp="1614162261754">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242126511" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1614242126510">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242126510" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1614242126511">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242126511" />
-    <state x="2472" y="257" key="Vcs.Push.Dialog.v2" timestamp="1614250373590">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2472" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250373590" />
-    <state x="2681" y="313" key="git4idea.merge.GitMergeDialog" timestamp="1614250514395">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2681" y="313" key="git4idea.merge.GitMergeDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250514395" />
+    <state x="2471" y="185" key="new project wizard/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614162261754" />
   </component>
 </project>
