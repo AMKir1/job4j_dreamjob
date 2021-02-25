@@ -6,6 +6,15 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
@@ -19,6 +28,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
@@ -50,8 +64,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614242032793</updated>
-      <workItem from="1614242034142" duration="2757000" />
+      <workItem from="1614242034142" duration="3595000" />
     </task>
+    <task id="LOCAL-00001" summary="workspace.xml">
+      <created>1614250351756</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614250351756</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,11 +90,23 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="2765" y="387" key="#Notifications" timestamp="1614242959969">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2765" y="387" key="#Notifications/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242959969" />
+    <state x="2018" y="112" width="1822" height="826" key="CommitChangelistDialog2" timestamp="1614250350674">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2018" y="112" width="1822" height="826" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250350674" />
+    <state x="2012" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1614250645871">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2012" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250645871" />
     <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1614242126511">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -89,5 +123,13 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614242126511" />
+    <state x="2472" y="257" key="Vcs.Push.Dialog.v2" timestamp="1614250373590">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2472" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250373590" />
+    <state x="2681" y="313" key="git4idea.merge.GitMergeDialog" timestamp="1614250514395">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2681" y="313" key="git4idea.merge.GitMergeDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1614250514395" />
   </component>
 </project>
