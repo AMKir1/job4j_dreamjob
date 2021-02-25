@@ -23,22 +23,14 @@
 <body>
 <div class="container">
     <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Идентификатор</th>
-                <th scope="col">Объявления</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for (Post post : Store.instOf().findAll()) { %>
-            <tr>
-                <td><%=post.getId()%></td>
-                <td><%=post.getName()%></td>
-            </tr>
-            <% } %>
-            </tbody>
-        </table>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="/dreamjob/candidates.jsp">Кандидаты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/dreamjob/posts.jsp">Вакансии</a>
+            </li>
+        </ul>
     </div>
 </div>
 </body>
