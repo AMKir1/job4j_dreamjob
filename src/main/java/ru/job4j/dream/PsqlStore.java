@@ -20,7 +20,7 @@ public class PsqlStore implements Store {
     private PsqlStore() {
         Properties cfg = new Properties();
         try (BufferedReader io = new BufferedReader(
-                new FileReader("db.properties")
+                new FileReader("H:/projects/job4j_dreamjob/db.properties")
         )) {
             cfg.load(io);
         } catch (Exception e) {
@@ -183,8 +183,6 @@ public class PsqlStore implements Store {
     }
 
     private void update(Post post) {
-        System.out.println(post.getName());
-        System.out.println(post.getId());
         try(Connection cn = pool.getConnection();
             PreparedStatement ps = cn.prepareStatement("UPDATE post SET name = (?) WHERE id = (?)")
         ) {
