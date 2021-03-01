@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
+import ru.job4j.dream.model.User;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -87,20 +88,20 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public Map<Long, String> findAllPhotos() {
-        Map<Long, String> photos = new HashMap<>();
+    public Collection<User> findAllUsers() {
+        List<User> users = new ArrayList<>();
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM photo")
+             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM users")
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
-                    photos.put(it.getLong("id"), it.getString("name"));
+                    users.add(new User(it.getInt("id"), it.getString("name"), it.getString("email"), it.getString("password")));
                 }
             }
         } catch (Exception e) {
-            log.error("Failed to find All Photos. {}", e.getMessage());
+            log.error("Failed to find All Users. {}", e.getMessage());
         }
-        return photos;
+        return users;
     }
 
     @Override
@@ -125,6 +126,15 @@ public class PsqlStore implements Store {
             create(candidate);
         } else {
             update(candidate);
+        }
+    }
+
+    @Override
+    public void saveUser(User user) {
+        if (user.getId() == 0) {
+            create(user);
+        } else {
+            update(user);
         }
     }
 
@@ -162,6 +172,24 @@ public class PsqlStore implements Store {
             log.error("Failed to find Candidate By Id. {}", e.getMessage());
         }
         return can;
+    }
+
+    @Override
+    public User findUserById(int id) {
+        User user = null;
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("SELECT id, name, email, password FROM users WHERE id = (?)")
+        ) {
+            ps.setLong(1, id);
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    user = new User(it.getInt("id"), it.getString("name"), it.getString("email"), it.getString("password"));
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to find User By Id. {}", e.getMessage());
+        }
+        return user;
     }
 
     @Override
@@ -219,6 +247,25 @@ public class PsqlStore implements Store {
         return can;
     }
 
+    private User create(User user) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps =  cn.prepareStatement("INSERT INTO users(name, email, password) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS)
+        ) {
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.execute();
+            try (ResultSet id = ps.getGeneratedKeys()) {
+                if (id.next()) {
+                    user.setId(id.getInt(1));
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to create User. {}", e.getMessage());
+        }
+        return user;
+    }
+
     private void update(Candidate can) {
         try(Connection cn = pool.getConnection();
         PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET name = (?) WHERE id = (?)")
@@ -240,6 +287,58 @@ public class PsqlStore implements Store {
             ps.execute();
         } catch (Exception e) {
             log.error("Failed to update Post. {}", e.getMessage());
+        }
+    }
+
+    private void update(User user) {
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("UPDATE users SET name = (?), email = (?), password = (?) WHERE id = (?)")
+        ) {
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.execute();
+        } catch (Exception e) {
+            log.error("Failed to update User. {}", e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserName(int id, String name) {
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("UPDATE users SET name = (?) WHERE id = (?)")
+        ) {
+            ps.setString(1, name);
+            ps.setString(2, String.valueOf(id));
+            ps.execute();
+        } catch (Exception e) {
+            log.error("Failed to update User's Name. {}", e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserEmail(int id, String email) {
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("UPDATE users SET email = (?) WHERE id = (?)")
+        ) {
+            ps.setString(1, email);
+            ps.setString(2, String.valueOf(id));
+            ps.execute();
+        } catch (Exception e) {
+            log.error("Failed to update User's Email. {}", e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserPassword(int id, String password) {
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("UPDATE users SET password = (?) WHERE id = (?)")
+        ) {
+            ps.setString(1, password);
+            ps.setString(2, String.valueOf(id));
+            ps.execute();
+        } catch (Exception e) {
+            log.error("Failed to update User's Password. {}", e.getMessage());
         }
     }
 
