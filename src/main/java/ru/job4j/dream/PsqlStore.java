@@ -1,6 +1,8 @@
 package ru.job4j.dream;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
 
@@ -13,6 +15,8 @@ import java.sql.ResultSet;
 import java.util.*;
 
 public class PsqlStore implements Store {
+
+    private final static Logger log = LoggerFactory.getLogger(PsqlStore.class);
     private final BasicDataSource pool = new BasicDataSource();
 
     private PsqlStore() {
@@ -22,11 +26,13 @@ public class PsqlStore implements Store {
         )) {
             cfg.load(io);
         } catch (Exception e) {
+            log.error("Failed to get db.properties. {}", e.getMessage());
             throw new IllegalStateException(e);
         }
         try {
             Class.forName(cfg.getProperty("jdbc.driver"));
         } catch (Exception e) {
+            log.error("Failed to get Property jdbc.driver. {}", e.getMessage());
             throw new IllegalStateException(e);
         }
         pool.setDriverClassName(cfg.getProperty("jdbc.driver"));
@@ -58,7 +64,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to find All Posts. {}", e.getMessage());
         }
         return posts;
     }
@@ -75,7 +81,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to find All Candidates. {}", e.getMessage());
         }
         return candidates;
     }
@@ -92,7 +98,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to find All Photos. {}", e.getMessage());
         }
         return photos;
     }
@@ -135,7 +141,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to find Post By Id. {}", e.getMessage());
         }
         return post;
     }
@@ -153,7 +159,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to find Candidate By Id. {}", e.getMessage());
         }
         return can;
     }
@@ -172,10 +178,9 @@ public class PsqlStore implements Store {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("Failed to find Photo By Candidate Id. {}", e.getMessage());
             }
-            System.out.println("findPhotoByCandidateId: " + photo + " FOR ID: " + id);
-            return photo != null ? photo : null;
+            return photo;
         }
         return null;
     }
@@ -192,7 +197,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to create Post. {}", e.getMessage());
         }
         return post;
     }
@@ -209,7 +214,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to create Candidate. {}", e.getMessage());
         }
         return can;
     }
@@ -222,7 +227,7 @@ public class PsqlStore implements Store {
             ps.setLong(2, can.getId());
             ps.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to update Candidate. {}", e.getMessage());
         }
     }
 
@@ -234,7 +239,7 @@ public class PsqlStore implements Store {
             ps.setLong(2, post.getId());
             ps.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to update Post. {}", e.getMessage());
         }
     }
 
@@ -251,7 +256,7 @@ public class PsqlStore implements Store {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to Save Photo Path. {}", e.getMessage());
         }
     }
 
@@ -263,7 +268,7 @@ public class PsqlStore implements Store {
             ps.setLong(2, c_id);
             ps.execute();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Failed to combine the picture with the candidate. {}", e.getMessage());
         }
     }
 
