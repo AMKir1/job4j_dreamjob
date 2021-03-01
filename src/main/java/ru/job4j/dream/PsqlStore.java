@@ -5,14 +5,12 @@ import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class PsqlStore implements Store {
     private final BasicDataSource pool = new BasicDataSource();
@@ -73,12 +71,36 @@ public class PsqlStore implements Store {
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
-                    candidates.add(new Candidate(it.getInt("id"), it.getString("name")));
+                    candidates.add(new Candidate(it.getInt("id"), it.getString("name"), it.getInt("photo_id")));
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return candidates;
+    }
+
+    @Override
+    public Map<Long, String> findAllPhotos() {
+        Map<Long, String> photos = new HashMap<>();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM photo")
+        ) {
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    photos.put(it.getLong("id"), it.getString("name"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return photos;
+    }
+
+    @Override
+    public Map<Candidate, String> findPhotoForAllCandidate(Collection<Candidate> clist) {
+        Map<Candidate, String> candidates = new HashMap<>();
+        clist.forEach(c -> candidates.put(c, findPhotoByCandidateId(String.valueOf(c.getId()))));
         return candidates;
     }
 
@@ -136,6 +158,28 @@ public class PsqlStore implements Store {
         return can;
     }
 
+    @Override
+    public String findPhotoByCandidateId(String id) {
+        if(id != null) {
+            String photo = null;
+            try (Connection cn = pool.getConnection();
+                 PreparedStatement ps = cn.prepareStatement("Select p.name  AS photo FROM candidate AS c JOIN photo AS p ON c.photo_id = p.id WHERE c.id = (?)")
+            ) {
+                ps.setLong(1, Integer.parseInt(id));
+                try (ResultSet it = ps.executeQuery()) {
+                    while (it.next()) {
+                        photo = new File(it.getString("photo")).getName();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("findPhotoByCandidateId: " + photo + " FOR ID: " + id);
+            return photo != null ? photo : null;
+        }
+        return null;
+    }
+
     private Post create(Post post) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps =  cn.prepareStatement("INSERT INTO post(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
@@ -188,6 +232,35 @@ public class PsqlStore implements Store {
         ) {
             ps.setString(1, post.getName());
             ps.setLong(2, post.getId());
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void savePhotoPath(int cand_id, String photo) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps =  cn.prepareStatement("INSERT INTO photo(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
+        ) {
+            ps.setString(1, photo);
+            ps.execute();
+            try (ResultSet id = ps.getGeneratedKeys()) {
+                if (id.next()) {
+                    joinCandidateAndPhoto(cand_id, id.getInt(1));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void joinCandidateAndPhoto(int c_id, int p_id) {
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET photo_id = (?) WHERE id = (?)")
+        ) {
+            ps.setLong(1, p_id);
+            ps.setLong(2, c_id);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();

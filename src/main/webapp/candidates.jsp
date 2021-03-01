@@ -1,3 +1,4 @@
+<%@ page import="ru.job4j.dream.PsqlStore" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
@@ -56,14 +57,34 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${candidates}" var="candidate">
+                    <c:forEach items="${candidates}" var="entry">
                         <tr>
                             <td>
-                                <a href='<c:url value="/candidate/edit.jsp?id=${candidate.id}"/>'>
+                                <a href='<c:url value="/candidate/edit.jsp?id=${entry.key.id}"/>'>
                                     <i class="fa fa-edit mr-3"></i>
                                 </a>
-                                <c:out value="${candidate.name}"/>
+                                <c:out value="${entry.key.name}"/>
                             </td>
+                            <c:if test="${entry.value ne null}">
+                                <td>
+                                    <a href=' <c:url value="/download?name=${entry.value}"/>'>Download</a>
+                                </td>
+                                <td>
+                                    <img src='<c:url value="/download?name=${entry.value}"/>' width="100px"
+                                         height="100px"/>
+                                </td>
+                            </c:if>
+                            <c:if test="${entry.value == null}">
+                                <td>
+                                    <form action="<c:url value='/upload?id=${entry.key.id}'/>" method="post"
+                                          enctype="multipart/form-data">
+                                        <div class="checkbox">
+                                            <input type="file" name="file">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+                                </td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                     </tbody>
