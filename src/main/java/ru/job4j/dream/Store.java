@@ -14,7 +14,7 @@ public interface Store {
 
     void savePost(Post post);
     void saveCandidate(Candidate candidate);
-    void saveUser(User user);
+    User saveUser(User user);
     void updateUserName(int id, String name);
     void updateUserEmail(int id, String email);
     void updateUserPassword(int id, String password);
@@ -22,6 +22,8 @@ public interface Store {
     Post findPostById(int id);
     Candidate findCandidateById(int id);
     User findUserById(int id);
+    User findUserByEmail(String email);
+    Boolean existsUser(String email);
 
     String findPhotoByCandidateId(String parseInt);
     void savePhotoPath(int candidate_id, String photo);

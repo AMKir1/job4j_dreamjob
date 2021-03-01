@@ -25,10 +25,10 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Авторизация
+                Регистрация
             </div>
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/auth.do" method="post">
+                <form action="<%=request.getContextPath()%>/reg.do" method="post">
                     <div class="form-group">
                         <label>Почта</label>
                         <input type="text" class="form-control" name="email">
@@ -37,12 +37,10 @@
                         <label>Пароль</label>
                         <input type="text" class="form-control" name="password">
                     </div>
-                    <c:if test="${not empty error}" >
+                    <c:if test="${not empty error}">
                         <p> <c:out value="${error}"/></p>
                     </c:if>
-
                     <button type="submit" class="btn btn-primary">Войти</button>
-                    <a class="nav-link" href="<%=request.getContextPath()%>/reg.jsp">Регистрация</a>
                 </form>
             </div>
         </div>

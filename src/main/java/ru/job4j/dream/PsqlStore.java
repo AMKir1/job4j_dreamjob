@@ -130,12 +130,25 @@ public class PsqlStore implements Store {
     }
 
     @Override
-    public void saveUser(User user) {
-        if (user.getId() == 0) {
-            create(user);
-        } else {
-            update(user);
+    public User saveUser(User user) {
+        return !existsUser(user.getEmail()) ? create(user) : null;
+    }
+    @Override
+    public Boolean existsUser(String email) {
+        int count = 0;
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = (?)")
+        ) {
+            ps.setString(1, email);
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    count = it.getInt(1);
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to find Post By Id. {}", e.getMessage());
         }
+        return count > 0;
     }
 
     @Override
@@ -188,6 +201,24 @@ public class PsqlStore implements Store {
             }
         } catch (Exception e) {
             log.error("Failed to find User By Id. {}", e.getMessage());
+        }
+        return user;
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        User user = null;
+        try(Connection cn = pool.getConnection();
+            PreparedStatement ps = cn.prepareStatement("SELECT id, name, email, password FROM users WHERE email = (?)")
+        ) {
+            ps.setString(1, email);
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    user = new User(it.getInt("id"), it.getString("name"), it.getString("email"), it.getString("password"));
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to find User By Email. {}", e.getMessage());
         }
         return user;
     }
