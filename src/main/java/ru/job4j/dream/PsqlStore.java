@@ -57,7 +57,7 @@ public class PsqlStore implements Store {
     public Collection<Post> findAllPosts() {
         List<Post> posts = new ArrayList<>();
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM post")
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM post")
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
@@ -74,7 +74,7 @@ public class PsqlStore implements Store {
     public Collection<Candidate> findAllCandidates() {
         List<Candidate> candidates = new ArrayList<>();
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM candidate")
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM candidate")
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
@@ -91,7 +91,7 @@ public class PsqlStore implements Store {
     public Collection<User> findAllUsers() {
         List<User> users = new ArrayList<>();
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("SELECT * FROM users")
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM users")
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
@@ -133,15 +133,16 @@ public class PsqlStore implements Store {
     public User saveUser(User user) {
         return !existsUser(user.getEmail()) ? create(user) : null;
     }
+
     @Override
     public Boolean existsUser(String email) {
         int count = 0;
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = (?)")
         ) {
             ps.setString(1, email);
             try (ResultSet it = ps.executeQuery()) {
-                while (it.next()) {
+                if (it.next()) {
                     count = it.getInt(1);
                 }
             }
@@ -154,12 +155,12 @@ public class PsqlStore implements Store {
     @Override
     public Post findPostById(int id) {
         Post post = null;
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("SELECT id, name FROM post WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT id, name FROM post WHERE id = (?)")
         ) {
             ps.setLong(1, id);
             try (ResultSet it = ps.executeQuery()) {
-                while (it.next()) {
+                if (it.next()) {
                     post = new Post(it.getInt("id"), it.getString("name"));
                 }
             }
@@ -172,12 +173,12 @@ public class PsqlStore implements Store {
     @Override
     public Candidate findCandidateById(int id) {
         Candidate can = null;
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("SELECT id, name FROM candidate WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT id, name FROM candidate WHERE id = (?)")
         ) {
             ps.setLong(1, id);
             try (ResultSet it = ps.executeQuery()) {
-                while (it.next()) {
+               if (it.next()) {
                     can = new Candidate(it.getInt("id"), it.getString("name"));
                 }
             }
@@ -190,12 +191,12 @@ public class PsqlStore implements Store {
     @Override
     public User findUserById(int id) {
         User user = null;
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("SELECT id, name, email, password FROM users WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT id, name, email, password FROM users WHERE id = (?)")
         ) {
             ps.setLong(1, id);
             try (ResultSet it = ps.executeQuery()) {
-                while (it.next()) {
+                if (it.next()) {
                     user = new User(it.getInt("id"), it.getString("name"), it.getString("email"), it.getString("password"));
                 }
             }
@@ -208,12 +209,12 @@ public class PsqlStore implements Store {
     @Override
     public User findUserByEmail(String email) {
         User user = null;
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("SELECT id, name, email, password FROM users WHERE email = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT id, name, email, password FROM users WHERE email = (?)")
         ) {
             ps.setString(1, email);
             try (ResultSet it = ps.executeQuery()) {
-                while (it.next()) {
+                if (it.next()) {
                     user = new User(it.getInt("id"), it.getString("name"), it.getString("email"), it.getString("password"));
                 }
             }
@@ -225,14 +226,14 @@ public class PsqlStore implements Store {
 
     @Override
     public String findPhotoByCandidateId(String id) {
-        if(id != null) {
+        if (id != null) {
             String photo = null;
             try (Connection cn = pool.getConnection();
                  PreparedStatement ps = cn.prepareStatement("Select p.name  AS photo FROM candidate AS c JOIN photo AS p ON c.photo_id = p.id WHERE c.id = (?)")
             ) {
                 ps.setLong(1, Integer.parseInt(id));
                 try (ResultSet it = ps.executeQuery()) {
-                    while (it.next()) {
+                    if (it.next()) {
                         photo = new File(it.getString("photo")).getName();
                     }
                 }
@@ -246,7 +247,7 @@ public class PsqlStore implements Store {
 
     private Post create(Post post) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("INSERT INTO post(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO post(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, post.getName());
             ps.execute();
@@ -263,7 +264,7 @@ public class PsqlStore implements Store {
 
     private Candidate create(Candidate can) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("INSERT INTO candidate(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO candidate(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, can.getName());
             ps.execute();
@@ -280,7 +281,7 @@ public class PsqlStore implements Store {
 
     private User create(User user) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("INSERT INTO users(name, email, password) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS)
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO users(name, email, password) VALUES (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
@@ -298,8 +299,8 @@ public class PsqlStore implements Store {
     }
 
     private void update(Candidate can) {
-        try(Connection cn = pool.getConnection();
-        PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET name = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET name = (?) WHERE id = (?)")
         ) {
             ps.setString(1, can.getName());
             ps.setLong(2, can.getId());
@@ -310,8 +311,8 @@ public class PsqlStore implements Store {
     }
 
     private void update(Post post) {
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("UPDATE post SET name = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE post SET name = (?) WHERE id = (?)")
         ) {
             ps.setString(1, post.getName());
             ps.setLong(2, post.getId());
@@ -322,8 +323,8 @@ public class PsqlStore implements Store {
     }
 
     private void update(User user) {
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("UPDATE users SET name = (?), email = (?), password = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE users SET name = (?), email = (?), password = (?) WHERE id = (?)")
         ) {
             ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
@@ -336,8 +337,8 @@ public class PsqlStore implements Store {
 
     @Override
     public void updateUserName(int id, String name) {
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("UPDATE users SET name = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE users SET name = (?) WHERE id = (?)")
         ) {
             ps.setString(1, name);
             ps.setString(2, String.valueOf(id));
@@ -349,8 +350,8 @@ public class PsqlStore implements Store {
 
     @Override
     public void updateUserEmail(int id, String email) {
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("UPDATE users SET email = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE users SET email = (?) WHERE id = (?)")
         ) {
             ps.setString(1, email);
             ps.setString(2, String.valueOf(id));
@@ -362,8 +363,8 @@ public class PsqlStore implements Store {
 
     @Override
     public void updateUserPassword(int id, String password) {
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("UPDATE users SET password = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE users SET password = (?) WHERE id = (?)")
         ) {
             ps.setString(1, password);
             ps.setString(2, String.valueOf(id));
@@ -376,7 +377,7 @@ public class PsqlStore implements Store {
     @Override
     public void savePhotoPath(int cand_id, String photo) {
         try (Connection cn = pool.getConnection();
-             PreparedStatement ps =  cn.prepareStatement("INSERT INTO photo(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO photo(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
             ps.setString(1, photo);
             ps.execute();
@@ -391,8 +392,8 @@ public class PsqlStore implements Store {
     }
 
     private void joinCandidateAndPhoto(int c_id, int p_id) {
-        try(Connection cn = pool.getConnection();
-            PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET photo_id = (?) WHERE id = (?)")
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("UPDATE candidate SET photo_id = (?) WHERE id = (?)")
         ) {
             ps.setLong(1, p_id);
             ps.setLong(2, c_id);
