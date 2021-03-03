@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         function validate() {
-            let result = "Заполните:";
+            let result = "";
             if($('#name').val() === '') {
                 result += " Имя";
             }
@@ -22,7 +22,21 @@
             if($('#desc').val() === '') {
                 result += " Описание";
             }
-            alert(result += ".");
+            if(result.length > 0) {
+                alert("Заполните: " + result + ".");
+                return false;
+            }
+           return true;
+        }
+
+        function addRow() {
+            if(validate()) {
+                var name = $('#name').val();
+                var surename = $('#surename').val();
+                var sex = $('#sex').val();
+                var desc = $('#desc').val();
+                $('#table tr:last').after('<tr><td>' + name + '</td><td>' + surename + '</td><td>' + sex + '</td><td>' + desc + '</td></tr>');
+            }
         }
     </script>
 </head>
@@ -30,9 +44,8 @@
 
 <div class="container-fluid">
     <h1>My First Bootstrap Page</h1>
-    <p>This is some text.</p>
 
-    <form action="/job4j_dreamjob/src/main/webapp/index.html">
+    <form>
         <div class="form-group">
             <label for="name">Имя</label>
             <input type="name" class="form-control" id="name">
@@ -44,6 +57,7 @@
         <div class="form-group">
             <label for="sex">Пол</label>
             <select class="form-control" id="sex">
+                <option></option>
                 <option>Муж</option>
                 <option>Жен</option>
             </select>
@@ -52,10 +66,9 @@
             <label for="desc">Описание</label>
             <textarea class="form-control" rows="5" id="desc"></textarea>
         </div>
-        <button type="submit" class="btn btn-default" onclick="validate()">Submit</button>
     </form>
-
-    <table class="table">
+    <button type="submit" class="btn btn-default" onclick="addRow()">Добавить</button>
+    <table class="table" id='table'>
         <thead>
         <tr>
             <th>Имя</th>
