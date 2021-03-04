@@ -4,6 +4,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.dream.model.Candidate;
+import ru.job4j.dream.model.City;
 import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.User;
 
@@ -78,7 +79,7 @@ public class PsqlStore implements Store {
         ) {
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
-                    candidates.add(new Candidate(it.getInt("id"), it.getString("name"), it.getInt("photo_id")));
+                    candidates.add(new Candidate(it.getInt("id"), it.getString("name"), it.getLong("photo_id"), it.getLong("city_id")));
                 }
             }
         } catch (Exception e) {
@@ -112,6 +113,23 @@ public class PsqlStore implements Store {
     }
 
     @Override
+    public Collection<City> findAllCities() {
+        List<City> cities = new ArrayList<>();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("SELECT * FROM cities")
+        ) {
+            try (ResultSet it = ps.executeQuery()) {
+                while (it.next()) {
+                    cities.add(new City(it.getLong("id"), it.getString("city")));
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to find All Posts. {}", e.getMessage());
+        }
+        return cities;
+    }
+
+    @Override
     public void savePost(Post post) {
         if (post.getId() == 0) {
             create(post);
@@ -126,6 +144,13 @@ public class PsqlStore implements Store {
             create(candidate);
         } else {
             update(candidate);
+        }
+    }
+
+    @Override
+    public void saveCity(String city) {
+        if (findCityByName(city) == null) {
+            create(city);
         }
     }
 
@@ -245,6 +270,48 @@ public class PsqlStore implements Store {
         return null;
     }
 
+    @Override
+    public City findCityById(String id) {
+        if (id != null) {
+            City city = null;
+            try (Connection cn = pool.getConnection();
+                 PreparedStatement ps = cn.prepareStatement("SELECT c.id AS id, c.city AS city FROM candidate AS can JOIN cities AS c ON can.city_id = c.id WHERE c.id = (?)")
+            ) {
+                ps.setLong(1, Integer.parseInt(id));
+                try (ResultSet it = ps.executeQuery()) {
+                    if (it.next()) {
+                        city = new City(it.getLong("id"), it.getString("city"));
+                    }
+                }
+            } catch (Exception e) {
+                log.error("Failed to find City By City Id. {}", e.getMessage());
+            }
+            return city;
+        }
+        return null;
+    }
+
+    @Override
+    public City findCityByName(String name) {
+        if (!name.equals("")) {
+            City city = null;
+            try (Connection cn = pool.getConnection();
+                 PreparedStatement ps = cn.prepareStatement("SELECT c.id AS id, c.city AS city FROM cities AS c WHERE c.city = (?)")
+            ) {
+                ps.setString(1, name);
+                try (ResultSet it = ps.executeQuery()) {
+                    if (it.next()) {
+                        city = new City(it.getLong("id"), it.getString("city"));
+                    }
+                }
+            } catch (Exception e) {
+                log.error("Failed to find City By City name. {}", e.getMessage());
+            }
+            return city;
+        }
+        return null;
+    }
+
     private Post create(Post post) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement("INSERT INTO post(name) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
@@ -296,6 +363,25 @@ public class PsqlStore implements Store {
             log.error("Failed to create User. {}", e.getMessage());
         }
         return user;
+    }
+
+    private City create(String cityname) {
+        City city = new City();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement("INSERT INTO sities(city) VALUES (?)", PreparedStatement.RETURN_GENERATED_KEYS)
+        ) {
+            ps.setString(1, cityname);
+            ps.execute();
+            try (ResultSet id = ps.getGeneratedKeys()) {
+                if (id.next()) {
+                     city.setId(id.getLong(1));
+                     city.setCity(cityname);
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to create Candidate. {}", e.getMessage());
+        }
+        return city;
     }
 
     private void update(Candidate can) {

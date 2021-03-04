@@ -1,3 +1,4 @@
+<%@ page import="ru.job4j.dream.PsqlStore" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
@@ -73,6 +74,8 @@
                                     <i class="fa fa-edit mr-3"></i>
                                 </a>
                                 <c:out value="${entry.key.name}"/>
+                            </td>
+                            <td>
                             </td>
                             <c:if test="${entry.value ne null}">
                                 <td>

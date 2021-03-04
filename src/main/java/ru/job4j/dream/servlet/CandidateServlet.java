@@ -12,9 +12,11 @@ public class CandidateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
-        PsqlStore.instOf().saveCandidate(new Candidate(Integer.parseInt(req.getParameter("id")), req.getParameter("name")));
-        resp.sendRedirect(req.getContextPath() + "/candidates.do");
+        PsqlStore.instOf().saveCandidate(new Candidate(Integer.parseInt(req.getParameter("id")), req.getParameter("name"),Long.parseLong(req.getParameter("photo_id")), Long.parseLong(req.getParameter("city_id"))));
+        resp.sendRedirect(req.getContextPath() + "/candidates.jsp");
     }
 
     @Override

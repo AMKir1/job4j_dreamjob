@@ -25,7 +25,7 @@ public class RegServlet extends HttpServlet {
             sc.setAttribute("user", user);
             resp.sendRedirect(req.getContextPath() + "/posts.do");
         } else {
-            req.setAttribute("error", "Пользователя существует");
+            req.setAttribute("error", "Пользователь существует");
             req.getRequestDispatcher("reg.jsp").forward(req, resp);
         }
     }

@@ -1,5 +1,6 @@
 package ru.job4j.dream.servlet;
 import ru.job4j.dream.PsqlStore;
+import ru.job4j.dream.model.Candidate;
 import ru.job4j.dream.model.Post;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +11,11 @@ import java.io.IOException;
 public class PostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");
+        resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
         PsqlStore.instOf().savePost(new Post(Integer.parseInt(req.getParameter("id")), req.getParameter("name")));
-        resp.sendRedirect(req.getContextPath() + "/posts.do");
+        resp.sendRedirect(req.getContextPath() + "/posts.jsp");
     }
 
     @Override

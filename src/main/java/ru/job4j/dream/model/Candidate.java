@@ -6,6 +6,7 @@ public class Candidate {
     private int id;
     private String name;
     private long photoId;
+    private long cityId;
 
     public Candidate(int id, String name) {
         this.id = id;
@@ -16,6 +17,13 @@ public class Candidate {
         this.id = id;
         this.name = name;
         this.photoId = photoId;
+    }
+
+    public Candidate(int id, String name, long photoId, long cityId) {
+        this.id = id;
+        this.name = name;
+        this.photoId = photoId;
+        this.cityId = cityId;
     }
 
     public int getId() {
@@ -42,17 +50,11 @@ public class Candidate {
         this.photoId = photoId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Candidate candidate = (Candidate) o;
-        return id == candidate.id &&
-                Objects.equals(name, candidate.name);
+    public Long getCityId() {
+        return cityId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
+    public void setCityId(City city) {
+        this.cityId = cityId;
     }
 }
