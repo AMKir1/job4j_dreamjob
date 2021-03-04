@@ -1,5 +1,8 @@
 package ru.job4j.dream.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.job4j.dream.model.Json;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +16,10 @@ public class GreetingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
         resp.setCharacterEncoding("UTF-8");
-        String name = req.getParameter("name");
         PrintWriter writer = new PrintWriter(resp.getOutputStream());
-        writer.println("Nice to meet you, " + name);
+        Json json = new Json("Nice to meet you, " + req.getParameter("text"));
+        ObjectMapper mapper = new ObjectMapper();
+        writer.println(mapper.writeValueAsString(json));
         writer.flush();
     }
 }
