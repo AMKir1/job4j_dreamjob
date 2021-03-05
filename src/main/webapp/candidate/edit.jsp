@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="ru.job4j.dream.model.Candidate" %>
 <%@ page import="ru.job4j.dream.PsqlStore" %>
-<%@ page import="ru.job4j.dream.model.City" %>
-<%@ page import="java.util.Collection" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!doctype html>
 <html lang="en">
@@ -127,23 +125,29 @@
             });
         }
     }
+
     $(function() {
         getCities();
     });
 
     function getCities() {
-        $.get('<%=request.getContextPath()%>/cities', function(data){
-            if(getCityIdByUser() === 0) {
+
+        $.ajax({
+            type: 'get',
+            url: '<%=request.getContextPath()%>/cities',
+            dataType: 'json'
+        }).done(function (data) {
+            if (getCityIdByUser() === 0) {
                 $("#city").append("<option selected>Выберите город</option>");
             }
-            $.each(JSON.parse(data), function(i, city) {
-                if(getCityIdByUser() > 0 && getCityIdByUser() === city.id ) {
-                    $("#city").append("<option value='"+ city.id +"' selected>" + city.city + "</option>");
+            $.each(data, function (i, city) {
+                if (getCityIdByUser() > 0 && getCityIdByUser() === city.id) {
+                    $("#city").append("<option value='" + city.id + "' selected>" + city.city + "</option>");
                 } else {
-                    $("#city").append("<option value='"+ city.id +"'>" + city.city + "</option>");
+                    $("#city").append("<option value='" + city.id + "'>" + city.city + "</option>");
                 }
             })
-        })
+        }).fail(function (err) {});
     }
 
     function getCityIdByUser() {
